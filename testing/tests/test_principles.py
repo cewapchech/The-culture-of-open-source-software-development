@@ -2,7 +2,7 @@ import sys
 sys.path.append("../src")
 #TODO make it with 'pip install -e'
 
-from math_deno import add
+from math_demo import(add,add_with_bug)
 
 def test_addition ():
     assert add(2,2) ==4

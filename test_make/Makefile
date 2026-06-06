@@ -6,7 +6,7 @@ MYPY = $(VENV)/bin/mypy
 RUFF = $(VENV)/bin/ruff
 
 # Объявление фиктивных целей (чтобы Make не искал файлы с такими именами)
-.PHONY: all venv install run typecheck lint format check-requirements check clean
+.PHONY: all venv install run typecheck lint format check-requirements check clean build clean-dist publish-test install-from-test
 
 # Цель по умолчанию (запускается при вводе просто 'make')
 all: venv install check
@@ -54,3 +54,7 @@ clean:
 	find . -type d -name "__pycache__" -exec rm -r {} +
 	find . -type d -name ".mypy_cache" -exec rm -r {} +
 	find . -type d -name ".ruff_cache" -exec rm -r {} +
+
+install-from-test:
+	@echo "Установка пакета из test.pypi.org..."
+	$(PIP) install --index-url https://test.pypi.org/simple/ --extra-index-url https://pypi.org/simple/ fossdev-quality-demo
